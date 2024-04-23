@@ -1,4 +1,4 @@
-let bubbles = [];
+let burbujas = [];
 
 function setup() {
   createCanvas(800, 600);
@@ -7,7 +7,7 @@ function setup() {
     let x = random(width);
     let y = random(height, height * 2);
     let speed = random(1, 3);
-    bubbles.push(new Bubble(x, y, speed));
+    burbujas.push(new Burbuja(x, y, speed));
   }
 }
 
@@ -15,12 +15,12 @@ function draw() {
   background(220);
   
  
-  for (let i = bubbles.length - 1; i >= 0; i--) {
-    bubbles[i].display();
-    bubbles[i].move();
+  for (let i = burbujas.length - 1; i >= 0; i--) {
+    burbujas[i].display();
+    burbujas[i].move();
     
-    if (bubbles[i].y < -50) {
-      bubbles.splice(i, 1);
+    if (burbujas[i].y < -50) {
+      burbujas.splice(i, 1);
     }
   }
 
@@ -28,11 +28,11 @@ function draw() {
     let x = random(width);
     let y = random(height, height * 2);
     let speed = random(1, 3);
-    bubbles.push(new Bubble(x, y, speed));
+    burbujas.push(new Burbuja(x, y, speed));
   }
 }
 
-class Bubble {
+class Burbuja {
   constructor(x, y, speed) {
     this.x = x;
     this.y = y;
