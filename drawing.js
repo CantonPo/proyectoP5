@@ -6,11 +6,6 @@ function setup(){
 
 
 function draw() {
-    
-}
-
-function mousePressed(){
-    
     let r = random(255);
     let g = random(255);
     let b = random(255);
@@ -21,5 +16,10 @@ function mousePressed(){
     let y2 = random(height);
     
     stroke(r, g, b);
-    line(x1, y1, x2, y2);
+    line(x1, y1, x2, y2);  
+}
+
+function mousePressed(){
+    
+    
 }
