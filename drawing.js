@@ -1,25 +1,52 @@
-function setup(){
-    createCanvas(600,400)
-    background (220)
+let bubbles = [];
+
+function setup() {
+  createCanvas(400, 400);
+  
+  for (let i = 0; i < 50; i++) {
+    let x = random(width);
+    let y = random(height, height * 2);
+    let speed = random(1, 3);
+    bubbles.push(new Bubble(x, y, speed));
+  }
 }
-
-
 
 function draw() {
-    let r = random(255);
-    let g = random(255);
-    let b = random(255);
+  background(220);
+  
+ 
+  for (let i = bubbles.length - 1; i >= 0; i--) {
+    bubbles[i].display();
+    bubbles[i].move();
     
-    let x1 = random(width);
-    let y1 = random(height);
-    let x2 = random(width);
-    let y2 = random(height);
-    
-    stroke(r, g, b);
-    line(x1, y1, x2, y2);  
+    if (bubbles[i].y < -50) {
+      bubbles.splice(i, 1);
+    }
+  }
+
+  if (random() < 0.05) {
+    let x = random(width);
+    let y = random(height, height * 2);
+    let speed = random(1, 3);
+    bubbles.push(new Bubble(x, y, speed));
+  }
 }
 
-function mousePressed(){
-    
-    
+class Bubble {
+  constructor(x, y, speed) {
+    this.x = x;
+    this.y = y;
+    this.speed = speed;
+    this.size = random(10, 30);
+  }
+  
+  display() {
+    noStroke();
+    fill(150, 200, 250, 150);
+    ellipse(this.x, this.y, this.size);
+  }
+  
+  move() {
+    this.y -= this.speed;
+  }
 }
